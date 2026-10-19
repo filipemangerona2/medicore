@@ -1,43 +1,23 @@
 import streamlit as st
 
-st.set_page_config(page_title="MediCore Urgent Pro", page_icon="⚡", layout="wide")
+st.set_page_config(page_title='MediCore Urgent Pro', page_icon='⚕️', layout='wide')
+st.title('MediCore Urgent Pro')
+st.warning('Protótipo educacional em validação. Não utilizar para prescrição ou decisão clínica em pacientes.')
 
-st.title("⚡ MediCore Urgent Pro - Plataforma Médica de Urgência")
-st.markdown("---")
+st.sidebar.header('Parâmetros')
+peso = st.sidebar.number_input('Peso (kg)', min_value=1.0, max_value=300.0, value=70.0)
+idade = st.sidebar.number_input('Idade (anos)', min_value=18, max_value=120, value=45)
 
-# Barra Lateral de Parâmetros
-st.sidebar.header("🎛️ Parâmetros do Paciente")
-peso = st.sidebar.number_input("Peso (kg)", 1.0, 300.0, 70.0)
-idade = st.sidebar.number_input("Idade (anos)", 0, 120, 45)
+st.header('Guia farmacológico')
+st.info('Módulo em revisão clínica. Protocolos e doses serão disponibilizados após validação por profissionais responsáveis.')
 
-# Seção 1: Guia Farmacológico
-st.markdown("## 📖 Guia Farmacológico e Condutas")
-droga = st.selectbox("Selecione o Fármaco de Urgência:", ["Noradrenalina", "Adrenalina", "Amiodarona", "Ceftriaxona"])
+st.header('Calculadora matemática de infusão — demonstração')
+st.caption('Exemplo matemático somente. Confira prescrição, unidade e concentração real antes de qualquer uso clínico.')
+dose = st.number_input('Dose informada (mcg/kg/min)', min_value=0.0, max_value=100.0, value=0.1, step=0.01)
+concentracao = st.number_input('Concentração informada (mcg/mL)', min_value=0.01, max_value=100000.0, value=16.0)
+vazao = dose * peso * 60 / concentracao
+st.metric('Resultado matemático (mL/h)', f'{vazao:.2f}')
+st.code('mL/h = dose (mcg/kg/min) × peso (kg) × 60 / concentração (mcg/mL)')
 
-if droga == "Noradrenalina":
-    st.info("Classe: Vasopressor\nIndicação: Choque séptico / Hipotensão grave.\nPosologia: 0.05 a 0.1 mcg/kg/min.")
-if droga == "Adrenalina":
-    st.info("Classe: Inotrópico / Vasoativo\nIndicação: PCR / Anafilaxia.\nPosologia PCR: 1 mg IV a cada 3-5 min.")
-if droga == "Amiodarona":
-    st.info("Classe: Antiarrítmico\nIndicação: FV/TV sem pulso.\nPosologia: 300 mg IV em bolus rápido.")
-if droga == "Ceftriaxona":
-    st.info("Classe: Antibiótico\nIndicação: Infecções graves.\nPosologia: 1g a 2g IV a cada 24h.")
-
-st.markdown("---")
-
-# Seção 2: Calculadora de Vasoativas
-st.markdown("## 💉 Calculadora de Infusão Contínua")
-dose_desejada = st.number_input("Dose (mcg/kg/min)", 0.01, 5.0, 0.10, 0.01)
-vazao_calculada = (dose_desejada * peso * 60.0) / 16.0
-st.success(f"Velocidade recomendada na bomba: {vazao_calculada:.2f} mL/h")
-
-st.markdown("---")
-
-# Seção 3: Clearance de Creatinina
-st.markdown("## 🫁 Clearance de Creatinina (Cockcroft-Gault)")
-creatinina = st.number_input("Creatinina Sérica (mg/dL)", 0.2, 15.0, 1.0)
-sexo = st.selectbox("Sexo Biológico", ["Masculino", "Feminino"])
-
-fator = 0.85 if sexo == "Feminino" else 1.0
-cl_cr = ((140 - idade) * peso * fator) / (72.0 * creatinina)
-st.info(f"Clearance Estimado: {cl_cr:.1f} mL/min")
+st.header('Estimativa de função renal — em validação')
+st.info('Cálculo de Cockcroft-Gault temporariamente indisponível até inclusão de critérios de peso, limitações e testes clínicos.')
