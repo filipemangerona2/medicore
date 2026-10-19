@@ -1,0 +1,2 @@
+# Somente para desenvolvimento e testes (o Streamlit Cloud usa apenas requirements.txt)
+pytest>=8.0

@@ -1,0 +1,10 @@
+# Tema escuro equivalente ao CSS da versão original, sem injeção de HTML.
+[theme]
+base = "dark"
+primaryColor = "#1f6feb"
+backgroundColor = "#0e1117"
+secondaryBackgroundColor = "#161b22"
+textColor = "#fafafa"
+
+[browser]
+gatherUsageStats = false
