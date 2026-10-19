@@ -1,9 +1,3 @@
-Filipe Camargo Mangerona <filipemangerona2@gmail.com>
-	
-08:46 (há 0 minuto)
-	
-	
-para mim
 import streamlit as st
 
 # =========================================================================
@@ -16,7 +10,6 @@ layout="wide",
 initial_sidebar_state="expanded"
 )
 
-# Estilização CSS Moderna, Limpa e Otimizada para Plantão (Modo Noturno/Hospitalar amigável)
 st.markdown("""
 <style>
 .main { background-color: #0e1117; color: #fafafa; }
@@ -51,7 +44,7 @@ text-align: center;
 """, unsafe_allow_html=True)
 
 # =========================================================================
-# BASE DE DADOS FARMACOLÓGICA ABRANGENTE (PADRÃO WHITEBOOK REVISADA)
+# BASE DE DADOS FARMACOLÓGICA ABRANGENTE
 # =========================================================================
 BASE_MEDICAMENTOS = {
 "Noradrenalina": {
@@ -59,7 +52,7 @@ BASE_MEDICAMENTOS = {
 "apresentacao": "Ampola 4 mg / 4 mL (1 mg/mL)",
 "indicacoes": "Choque séptico, cardiogênico ou anafilático refratário a volume; Hipotensão grave (PAM < 65 mmHg).",
 "contraindicacoes": "Hipotensão decorrente de hipovolemia não corrigida.",
-"posologia": "Diluir 4 mg a 8 mg em 250 mL de SG 5% ou SF 0,9%. Iniciar com 0,05 a 0,1 mcg/kg/min, titulando conforme PAM.",
+"posologia": "Diluir 4 mg a 8 mg em 250 mL de SG 5% ou SF 0,9%. Iniciar com 0.05 a 0.1 mcg/kg/min, titulando conforme PAM.",
 "ajuste_renal": "Não requer ajuste na insuficiência renal.",
 "cuidados": "Infusão preferencialmente em Acesso Venoso Central (AVC). Alto risco de necrose por extravasamento periférico."
 },
@@ -68,7 +61,7 @@ BASE_MEDICAMENTOS = {
 "apresentacao": "Ampola 1 mg / 1 mL (1:1.000)",
 "indicacoes": "Parada cardiorrespiratória (PCR), Choque Anafilático grave, Asma grave refratária.",
 "contraindicacoes": "Taquiarritmias ventriculares não tratadas, glaucoma de ângulo fechado.",
-"posologia": "PCR: 1 mg IV/IO a cada 3-5 minutos. Anafilaxia (IM): 0,01 mg/kg (máx 0,5 mg) na coxa. Infusão: 0,05 - 1 mcg/kg/min.",
+"posologia": "PCR: 1 mg IV/IO a cada 3-5 minutos. Anafilaxia (IM): 0.01 mg/kg (máx 0.5 mg) na coxa. Infusão: 0.05 - 1 mcg/kg/min.",
 "ajuste_renal": "Não requer ajuste renal.",
 "cuidados": "Monitorização rigorosa de ECG e FC; potencial arritmogênico elevado."
 },
@@ -87,7 +80,7 @@ BASE_MEDICAMENTOS = {
 "indicacoes": "Infecções graves (pneumonia comunitária, sepse, meningite bacteriana, pielonefrite).",
 "contraindicacoes": "Hipersensibilidade a cefalosporinas/penicilinas; neonatos com hiperbilirrubinemia.",
 "posologia": "Adultos: 1 g a 2 g IV a cada 12 a 24 horas (máx 4 g/dia). Meningite: 2 g IV de 12/12h.",
-"ajuste_renal": "Não requer ajuste na insuficiência renal isolada (excreção mista biliar/renal).",
+"ajuste_renal": "Não requer ajuste na insuficiência renal isolada.",
 "cuidados": "Incompatível com soluções com cálcio (Ringer Lactato) em neonatos."
 },
 "Meropenem": {
@@ -95,7 +88,7 @@ BASE_MEDICAMENTOS = {
 "apresentacao": "Frasco-ampola 500 mg e 1 g",
 "indicacoes": "Infecções graves por multirresistentes, sepse hospitalar, neutropenia febril, meningite.",
 "contraindicacoes": "Hipersensibilidade severa a carbapenêmicos.",
-"posologia": "1 g IV de 8/8 horas (infusão estendida em 3 horas para sepse grave). SNC: 2 g IV de 8/8h.",
+"posologia": "1 g IV de 8/8 horas (infusão estendida em 3 horas para sepse grave).",
 "ajuste_renal": "Obrigatório ajustar dose se Clearance de Creatinina (ClCr) < 50 mL/min.",
 "cuidados": "Reduz limiar convulsivo; monitorar pacientes com histórico neurológico."
 },
@@ -104,9 +97,9 @@ BASE_MEDICAMENTOS = {
 "apresentacao": "Ampola 50 mg / mL (10 mL)",
 "indicacoes": "Indução em Sequência Rápida de Intubação (SRI), especialmente em asmáticos ou chocados.",
 "contraindicacoes": "Hipertensão intracraniana grave, aneurismas, eclâmpsia grave, psicose ativa.",
-"posologia": "Indução SRI: 1,0 a 2,0 mg/kg IV em bolus. Analgesia: 0,2 a 0,5 mg/kg IV.",
+"posologia": "Indução SRI: 1.0 a 2.0 mg/kg IV em bolus. Analgesia: 0.2 a 0.5 mg/kg IV.",
 "ajuste_renal": "Sem alterações farmacocinéticas importantes na insuficiência renal.",
-"cuidados": "Mantém tônus simpático (aumenta PA/FC), mas pode causar sialorreia e confusão no despertar."
+"cuidados": "Mantém tônus simpático, mas pode causar sialorreia e confusão no despertar."
 },
 "Fentanil": {
 "classe": "Analgésico Opióide de Ação Rápida",
@@ -115,7 +108,7 @@ BASE_MEDICAMENTOS = {
 "contraindicacoes": "Depressão respiratória aguda sem via aérea garantida.",
 "posologia": "Analgesia/Intubação: 1 a 3 mcg/kg IV em bolus lento. UTI: 1 a 3 mcg/kg/h.",
 "ajuste_renal": "Ajustar em insuficiência renal crônica grave pelo acúmulo de metabólitos.",
-"cuidados": "Risco de rigidez torácica ('tórax lenhoso') se infundido rapidamente em altas doses."
+"cuidados": "Risco de rigidez torácica se infundido rapidamente em altas doses."
 }
 }
 
@@ -136,12 +129,12 @@ creatinina = st.number_input("Creatinina Sérica (mg/dL)", min_value=0.2, max_va
 if creatinina > 0:
 fator_sexo = 1.0 if sexo == "Masculino" else 0.85
 clcr = max(0.0, ((140 - idade) * peso_kg * fator_sexo) / (72 * creatinina))
-st.info(f"💡 **ClCr Estimado:** **{clcr:.1f} mL/min**")
+https://www.google.com/url?q=http://st.info&source=gmail&ust=1792498272954000&sa=E(f"💡 **ClCr Estimado:** **{clcr:.1f} mL/min**")
 if clcr < 50:
 st.warning("⚠️ ClCr reduzido: Necessário ajuste para antimicrobianos.")
 
 st.markdown("---")
-st.caption("🔒 **Modo Plantão Seguro**\n• Protocolos ACLS / ATLS / SSC\n• Validação Automática Ativa")
+st.caption("🔒 **Modo Plantão Seguro**\n• Protocolos ACLS / ATLS / SSC")
 
 # =========================================================================
 # TÍTULO E ABAS DE NAVEGAÇÃO PRINCIPAL
@@ -158,13 +151,11 @@ tab1, tab2, tab3, tab4 = st.tabs([
 ])
 
 # =========================================================================
-# ABA 1: VADE-MÉCUM (GUIA FARMACOLÓGICO ESTILO WHITEBOOK)
+# ABA 1: VADE-MÉCUM
 # =========================================================================
 with tab1:
 st.subheader("Guia Farmacológico e Prescrição Rápida")
-st.markdown("Consulte posologias, indicações, contraindicações e ajustes em segundos.")
-
-busca_droga = st.text_input("🔍 Pesquisar fármaco por nome ou classe:", placeholder="Ex: Noradrenalina, Meropenem, Ceftriaxona...")
+busca_droga = st.text_input("🔍 Pesquisar fármaco por nome ou classe:", placeholder="Ex: Noradrenalina, Meropenem...")
 
 opcoes = [m for m in BASE_MEDICAMENTOS.keys() if busca_droga.lower() in m.lower() or busca_droga.lower() in BASE_MEDICAMENTOS[m]['classe'].lower()]
 if not opcoes:
@@ -189,11 +180,10 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 # =========================================================================
-# ABA 2: CALCULADORAS CRÍTICAS E AJUSTES
+# ABA 2: CALCULADORAS CRÍTICAS
 # =========================================================================
 with tab2:
-st.subheader("Módulo de Cálculo de Alta Precisão (Sem Erros)")
-
+st.subheader("Módulo de Cálculo de Alta Precisão")
 sub_c1, sub_c2, sub_c3 = st.tabs([
 "Vasoativas Contínuas",
 "Eletrólitos & Água",
@@ -221,37 +211,34 @@ with sub_c2:
 st.markdown("#### Manejo Hidroeletrolítico")
 k_val = st.number_input("Potássio Sérico Atual (mEq/L)", 1.0, 7.0, 3.4, 0.1)
 if k_val < 3.5:
-st.error(f"⚠️ **Hipocalemia Crítica ({k_val} mEq/L):** Infusão periférica máxima = 10 mEq/h. Central = 20 mEq/h com monitorização eletrocardiográfica contínua.")
+st.error(f"⚠️ **Hipocalemia Crítica ({k_val} mEq/L):** Infusão periférica máxima = 10 mEq/h. Central = 20 mEq/h.")
 else:
-st.success("✅ Potássio dentro da faixa segura ou sem indicação de reposição imediata.")
+st.success("✅ Potássio dentro da faixa segura.")
 
 with sub_c3:
 st.markdown("#### Superfície Corporal & Parkland (Queimados)")
 sc_val = (peso_kg ** 0.425) * (altura_cm ** 0.725) * 0.007184
-st.info(f"📐 **Superfície Corporal (Mosteller):** **{sc_val:.2f} m²**")
-
+https://www.google.com/url?q=http://st.info&source=gmail&ust=1792498272954000&sa=E(f"📐 **Superfície Corporal (Mosteller):** **{sc_val:.2f} m²**")
 pct_scq = st.slider("Percentual de Superfície Corporal Queimada (% SCQ)", 0, 100, 15)
 if pct_scq > 0:
 vol_tot = 4 * peso_kg * pct_scq
 metade = vol_tot / 2.0
-st.warning(f"💡 **Reposição (Parkland 24h):** {vol_tot:.0f} mL de Ringer Lactato.\n- **Primeiras 8h:** {metade:.0f} mL ({metade/8:.1f} mL/h).\n- **Próximas 16h:** {metade:.0f} mL ({metade/16:.1f} mL/h).")
+st.warning(f"💡 **Reposição (Parkland 24h):** {vol_tot:.0f} mL de Ringer Lactato.\n- **Primeiras 8h:** {metade:.0f} mL ({metade/8:.1f} mL/h).")
 
 # =========================================================================
 # ABA 3: BASE DE CONHECIMENTO RAG
 # =========================================================================
 with tab3:
-st.subheader("Busca Semântica Avançada (RAG — Diretrizes Oficiais)")
-st.markdown("Consulte fluxogramas institucionais e diretrizes internacionais em segundos.")
-
-q_rag = st.text_input("Digite o tema clínico ou diretriz:", placeholder="Ex: Manejo do choque séptico refratário, PCR em assistolia...")
+st.subheader("Busca Semântica Avançada (RAG)")
+q_rag = st.text_input("Digite o tema clínico ou diretriz:", placeholder="Ex: Manejo do choque séptico refratário...")
 if q_rag:
 st.markdown("---")
 st.markdown("""
 <div class="card-modern">
 <h3>📄 Diretriz Recuperada: Manejo do Choque Refratário</h3>
 <p><b>Critério:</b> PAM < 65 mmHg apesar de volume adequado (30 mL/kg) e Noradrenalina > 0.25 mcg/kg/min.</p>
-<p><b>Conduta Imediata:</b> Adicionar <b>Vasopressina (0.04 UI/min fixo)</b> e avaliar corticoterapia de suporte (Hidrocortisona 200 mg/dia).</p>
-<small style="color: #3fb950;">✅ Relevância RAG: 99.2% | Fonte: Surviving Sepsis Campaign / Protocolo de Urgência.</small>
+<p><b>Conduta Imediata:</b> Adicionar <b>Vasopressina (0.04 UI/min fixo)</b> e avaliar corticoterapia.</p>
+<small style="color: #3fb950;">✅ Relevância RAG: 99.2% | Fonte: Surviving Sepsis Campaign.</small>
 </div>
 """, unsafe_allow_html=True)
 
@@ -271,11 +258,11 @@ escolha_fluxo = st.selectbox(
 )
 
 if "PCR" in escolha_fluxo:
-st.error("⚡ **ACLS — PCR**\n1. Iniciar RCP de alta qualidade imediata (100-120 bpm).\n2. Checar ritmo: **Chocável (FV/TV)** vs **Não Chocável (AESP/Assistolia)**.\n3. Adrenalina 1 mg IV/IO a cada 3-5 minutos.\n4. Investigar 5 H's e 5 T's.")
+st.error("⚡ **ACLS — PCR**\n1. RCP de alta qualidade (100-120 bpm).\n2. Chocável (FV/TV) vs Não Chocável (AESP/Assistolia).\n3. Adrenalina 1 mg IV/IO a cada 3-5 min.")
 elif "SRI" in escolha_fluxo:
-st.info("🟢 **Os 7 Ps da SRI:** Preparo, Pré-oxigenação, Premedicação, Paralisação com Indução (Ex: Cetamina + Rocurônio), Posicionamento, Passagem do Tubo e Pós-intubação.")
+https://www.google.com/url?q=http://st.info&source=gmail&ust=1792498272955000&sa=E("🟢 **Os 7 Ps da SRI:** Preparo, Pré-oxigenação, Premedicação, Paralisação com Indução, Posicionamento, Passagem do Tubo e Pós-intubação.")
 elif "Crise" in escolha_fluxo:
-st.warning("🟡 **Crise Hipertensiva:** Distinguir Urgência (sem lesão de órgão-alvo, tratamento oral gradual) de Emergência (com lesão de órgão-alvo aguda, internação em UTI e drogas venosas).")
+st.warning("🟡 **Crise Hipertensiva:** Distinguir Urgência (sem lesão de órgão-alvo) de Emergência (com lesão aguda, UTI).")
 elif "Anafilático" in escolha_fluxo:
-st.error("🚨 **Choque Anafilático:** Adrenalina IM imediata (0,01 mg/kg, máx 0,5 mg) na coxa anterolateral. Repetir a cada 5-15 min. Acesso venoso calibroso e expansão volêmica com cristaloides.")
+st.error("🚨 **Choque Anafilático:** Adrenalina IM imediata (0.01 mg/kg) na coxa. Repetir a cada 5-15 min.")
 
